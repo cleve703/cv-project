@@ -25,13 +25,15 @@ class App extends Component {
         datesAttended: '',
         id: uniqid(),
       },
+      schools: [],
       practicalData: {
         companyName: '',
         positionTitle: '',
         jobDescription: '',
         datesWorked: '',
         id: uniqid,
-      }
+      },
+      companies: [],
     }
   }
 
@@ -39,9 +41,11 @@ class App extends Component {
     const { generalData, educationData, practicalData } = this.state;
     return (
       <div className="cv-main">
-        <General generalData={generalData} />
-        <Practical practicalData={practicalData} />
-        <Education educationData={educationData} />
+        <form>
+          <General generalData={generalData} />
+          <Education educationData={educationData} />
+          <Practical practicalData={practicalData} />
+        </form>
       </div>
     )
   }

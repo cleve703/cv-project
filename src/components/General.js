@@ -4,15 +4,15 @@ class General extends React.Component {
   render() {
     const { generalData } = this.props;
     return (
-      <ul>
-        <li key={generalData.id}>{generalData.firstName}</li>
-        <li key={generalData.id}>{generalData.lastName}</li>
-        <li key={generalData.id}>{generalData.streetAddress}</li>
-        <li key={generalData.id}>{generalData.cityStateZip}</li>
-        <li key={generalData.id}>{generalData.phoneNumber}</li>
-        <li key={generalData.id}>{generalData.emailAddress}</li>
-        <li key={generalData.id}>{generalData.linkedIn}</li>
-      </ul>
+    <div>
+      <input type="text" key={generalData.id} value={generalData.firstName} placeholder="First Name"></input>
+      <input type="text" key={generalData.id} value={generalData.lastName} placeholder="Last Name"></input>
+      <input type="text" key={generalData.id} value={generalData.streetAddress} placeholder="Street Address"></input>
+      <input type="text" key={generalData.id} value={generalData.cityStateZip} placeholder="City, State, Zip"></input>
+      <input type="text" key={generalData.id} value={generalData.phoneNumber} placeholder="Phone"></input>
+      <input type="text" key={generalData.id} value={generalData.emailAddress} placeholder="Email"></input>
+      <input type="text" key={generalData.id} value={generalData.linkedIn} placeholder="LinkedIn"></input>
+    </div>
     )
   }
 }
