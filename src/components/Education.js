@@ -2,14 +2,36 @@ import React from "react";
 
 class Education extends React.Component {
   render() {
-    const { educationData } = this.props;
+    const { educationData, handleChangeEducation } = this.props;
     return (
-      <div>
-        <input key={educationData.id} placeholder="School Name" value={educationData.companyName}></input>
-        <input key={educationData.id} placeholder="School Location" value={educationData.positionTitle}></input>
-        <input key={educationData.id} placeholder="Degree Type" value={educationData.jobDescription}></input>
-        <input key={educationData.id} placeholder="Dates Attended" value={educationData.datesWorked}></input>
-      </div>
+      <fieldset>
+        <div>
+          <input
+            onChange={ e => handleChangeEducation(e)}
+            name="schoolName"
+            placeholder="School Name"
+            value={educationData.schoolName}
+          />
+          <input
+            onChange={ e => handleChangeEducation(e)}
+            name="schoolLocation"
+            placeholder="School Location"
+            value={educationData.schoolLocation}
+          />
+          <input
+            onChange={ e => handleChangeEducation(e)}
+            name="degreeType"
+            placeholder="Degree Type"
+            value={educationData.degreeType}
+          />
+          <input
+            onChange={ e => handleChangeEducation(e)}
+            name="datesAttended"
+            placeholder="Dates Attended"
+            value={educationData.datesAttended}
+          />
+        </div>
+      </fieldset>
     )
   }
 }

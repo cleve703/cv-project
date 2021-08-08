@@ -1,0 +1,9 @@
+input {
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+fieldset {
+  border: none;
+}

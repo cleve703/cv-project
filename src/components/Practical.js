@@ -2,13 +2,39 @@ import React from "react";
 
 class Practical extends React.Component {
   render() {
-    const { practicalData } = this.props;
+    const { practicalData, handleChangePractical } = this.props;
     return (
       <div>
-        <input key={practicalData.id} placeholder="Company Name" value={practicalData.companyName}></input>
-        <input key={practicalData.id} placeholder="Position Title" value={practicalData.positionTitle}></input>
-        <input key={practicalData.id} placeholder="Job Description" value={practicalData.jobDescription}></input>
-        <input key={practicalData.id} placeholder="Dates Worked" value={practicalData.datesWorked}></input>
+        <fieldset>
+          <input 
+            onChange={ e => handleChangePractical(e)}
+            name="companyName"
+            type="text"
+            placeholder="Company Name" 
+            value={practicalData.companyName} 
+          />
+          <input 
+            onChange={ e => handleChangePractical(e)}
+            name="positionTitle"
+            type="text"
+            placeholder="Position Title" 
+            value={practicalData.positionTitle} 
+          />
+          <input
+            onChange={ e => handleChangePractical(e)}
+            name="jobDescription"
+            type="text"
+            placeholder="Job Description" 
+            value={practicalData.jobDescription} 
+          />
+          <input 
+            onChange={ e => handleChangePractical(e)}
+            name="datesWorked"
+            type="text"
+            placeholder="Dates Worked" 
+            value={practicalData.datesWorked} 
+          />
+          </fieldset>
       </div>
     )
   }
