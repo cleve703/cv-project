@@ -8,17 +8,11 @@ class General extends React.Component {
       <fieldset>
         <input
           onChange={ e => handleChangeGeneral(e)}
-          name="firstName"
+          name="fullName"
           type="text"
-          value={generalData.firstName}
-          placeholder="First Name"
-        />
-        <input
-          onChange={ e => handleChangeGeneral(e)}
-          name="lastName"
-          type="text"
-          value={generalData.lastName}
-          placeholder="Last Name"
+          value={generalData.fullName}
+          placeholder="Full Name"
+          id="full-name"
         />
         <input
           onChange={ e => handleChangeGeneral(e)}
@@ -26,6 +20,7 @@ class General extends React.Component {
           type="text"
           value={generalData.streetAddress}
           placeholder="Street Address"
+          id="street-address"
         />
         <input
           onChange={ e => handleChangeGeneral(e)}
@@ -33,6 +28,7 @@ class General extends React.Component {
           type="text"
           value={generalData.cityStateZip}
           placeholder="City, State, Zip"
+          id="city-state-zip"
         />
         <input
           onChange={ e => handleChangeGeneral(e)}

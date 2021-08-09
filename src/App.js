@@ -10,8 +10,7 @@ class App extends Component {
     super();
     this.state = {
       generalData: {
-        firstName: '',
-        lastName: '',
+        fullName: '',
         streetAddress: '',
         cityStateZip: '',
         phoneNumber: '',
@@ -42,8 +41,7 @@ class App extends Component {
     this.setState((prevState) => {
       return {
         generalData: {
-          firstName: prevState.generalData.firstName,
-          lastName: prevState.generalData.lastName,
+          fullName: prevState.generalData.fullName,
           streetAddress: prevState.generalData.streetAddress,
           cityStateZip: prevState.generalData.cityStateZip,
           phoneNumber: prevState.generalData.phoneNumber,
