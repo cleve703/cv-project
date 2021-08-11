@@ -5,19 +5,16 @@ class Practical extends React.Component {
     const { jobData, handleChangePractical, addJob, jobs } = this.props;
     return (
       <div>
-        <ul class="naked-list">
           {jobs.map((job) => {
-            return  ( <li key={job.id}>
-                        <ul class="naked-list">
-                          <li>{job.companyName}</li>
-                          <li>{job.positionTitle}</li>
-                          <li>{job.jobDescription}</li>
-                          <li>{job.datesWorked}</li>
-                        </ul>
-                      </li>
+            return  ( <fieldset key={job.id}>
+                        <input value={job.companyName} disabled />
+                        <input value={job.positionTitle} disabled />
+                        <input value={job.jobDescription} disabled />
+                        <input value={job.datesWorked} disabled />
+                        <button type="button">Delete</button>
+                      </fieldset>
                     )
           })}
-        </ul>
       
         <fieldset>
           <input

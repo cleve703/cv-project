@@ -23,9 +23,6 @@ input:focus {
   background-color: rgba(199,199,199,.5);
   border-radius: 3px;
 }
-fieldset {
-  /* border: none; */
-}
 button {
   margin: 15px;
   font-size: large;

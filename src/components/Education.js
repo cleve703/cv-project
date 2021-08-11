@@ -5,19 +5,16 @@ class Education extends React.Component {
     const { schoolData, handleChangeEducation, addSchool, schools } = this.props;
     return (
       <div>
-        <ul class="naked-list">
           {schools.map((school) => {
-            return  ( <li key={school.id}>
-                        <ul class="naked-list">
-                          <li>{school.schoolName}</li>
-                          <li>{school.schoolLocation}</li>
-                          <li>{school.degreeType}</li>
-                          <li>{school.datesAttended}</li>
-                        </ul>
-                      </li>
+            return  ( <fieldset key={school.id}>
+                          <input value={school.schoolName} disabled />
+                          <input value={school.schoolLocation} disabled />
+                          <input value={school.degreeType} disabled />
+                          <input value={school.datesAttended} disabled />
+                          <button type="button">Delete</button>
+                      </fieldset>
                     )
           })}
-        </ul>
         <fieldset>
           <input
             onChange={ e => handleChangeEducation(e)}
