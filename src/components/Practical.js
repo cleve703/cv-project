@@ -2,7 +2,7 @@ import React from "react";
 
 class Practical extends React.Component {
   render() {
-    const { jobData, handleChangePractical, addJob, jobs } = this.props;
+    const { jobData, handleChangePractical, addJob, jobs, deleteJob } = this.props;
     return (
       <div>
           {jobs.map((job) => {
@@ -11,7 +11,7 @@ class Practical extends React.Component {
                         <input value={job.positionTitle} disabled />
                         <input value={job.jobDescription} disabled />
                         <input value={job.datesWorked} disabled />
-                        <button type="button">Delete</button>
+                        <button type="button" onClick={ () => deleteJob(job.id)}>Delete</button>
                       </fieldset>
                     )
           })}

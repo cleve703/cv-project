@@ -2,7 +2,7 @@ import React from "react";
 
 class Education extends React.Component {
   render() {
-    const { schoolData, handleChangeEducation, addSchool, schools } = this.props;
+    const { schoolData, handleChangeEducation, addSchool, schools, deleteSchool } = this.props;
     return (
       <div>
           {schools.map((school) => {
@@ -11,7 +11,7 @@ class Education extends React.Component {
                           <input value={school.schoolLocation} disabled />
                           <input value={school.degreeType} disabled />
                           <input value={school.datesAttended} disabled />
-                          <button type="button">Delete</button>
+                          <button type="button" onClick={() => deleteSchool(school.id)}>Delete</button>
                       </fieldset>
                     )
           })}

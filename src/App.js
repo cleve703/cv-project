@@ -87,7 +87,6 @@ class App extends Component {
 
   addSchool = (e) => {
     e.preventDefault();
-    console.log('success')
     this.setState({
       schools: this.state.schools.concat(this.state.schoolData),
       schoolData: {
@@ -114,6 +113,19 @@ class App extends Component {
     });
   }
 
+  deleteSchool = (schoolId) => {
+    this.setState({
+      schools: this.state.schools.filter(school => school.id !== schoolId)
+    })
+  }
+
+  deleteJob = (jobId) => {
+    this.setState({
+      jobs: this.state.jobs.filter(job => job.id !== jobId)
+    })
+  }
+
+
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state)
@@ -133,12 +145,14 @@ class App extends Component {
             schools={schools} 
             handleChangeEducation={this.handleChangeEducation}
             addSchool={this.addSchool}
+            deleteSchool={this.deleteSchool}
           />
           <Practical 
             jobData={jobData} 
             jobs={jobs}
             handleChangePractical={this.handleChangePractical}
             addJob={this.addJob}
+            deleteJob={this.deleteJob}
           />
           <button type="submit">Finalize</button>
           <button type="button">Edit</button>
