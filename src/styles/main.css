@@ -24,7 +24,7 @@ input:focus {
   border-radius: 3px;
 }
 fieldset {
-  border: none;
+  /* border: none; */
 }
 button {
   margin: 15px;

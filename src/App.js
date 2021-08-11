@@ -18,7 +18,7 @@ class App extends Component {
         linkedIn: '',
         id: uniqid(),
       },
-      educationData: {
+      schoolData: {
         schoolName: '',
         schoolLocation: '',
         degreeType: '',
@@ -26,14 +26,14 @@ class App extends Component {
         id: uniqid(),
       },
       schools: [],
-      practicalData: {
+      jobData: {
         companyName: '',
         positionTitle: '',
         jobDescription: '',
         datesWorked: '',
         id: uniqid(),
       },
-      companies: [],
+      jobs: [],
     }
   }
   
@@ -57,13 +57,13 @@ class App extends Component {
   handleChangeEducation = (e) => {
     this.setState((prevState) => {
       return {
-        educationData: {
-          schoolName: prevState.educationData.schoolName,
-          schoolLocation: prevState.educationData.schoolLocation,
-          degreeType: prevState.educationData.degreeType,
-          datesAttended: prevState.educationData.datesAttended,
+        schoolData: {
+          schoolName: prevState.schoolData.schoolName,
+          schoolLocation: prevState.schoolData.schoolLocation,
+          degreeType: prevState.schoolData.degreeType,
+          datesAttended: prevState.schoolData.datesAttended,
           [e.target.name]: e.target.value,
-          id: prevState.educationData.id,
+          id: prevState.schoolData.id,
         }
       }
     });
@@ -72,17 +72,47 @@ class App extends Component {
   handleChangePractical = (e) => {
     this.setState((prevState) => {
       return {
-        practicalData: {
-          companyName: prevState.practicalData.companyName,
-          positionTitle: prevState.practicalData.positionTitle,
-          jobDescription: prevState.practicalData.jobDescription,
-          datesWorked: prevState.practicalData.datesWorked,
+        jobData: {
+          companyName: prevState.jobData.companyName,
+          positionTitle: prevState.jobData.positionTitle,
+          jobDescription: prevState.jobData.jobDescription,
+          datesWorked: prevState.jobData.datesWorked,
           [e.target.name]: e.target.value,
-          id: prevState.practicalData.id,
+          id: prevState.jobData.id,
         }
       }
     });
   };
+
+
+  addSchool = (e) => {
+    e.preventDefault();
+    console.log('success')
+    this.setState({
+      schools: this.state.schools.concat(this.state.schoolData),
+      schoolData: {
+        schoolName: '',
+        schoolLocation: '',
+        degreeType: '',
+        datesAttended: '',
+        id: uniqid(),
+      }
+    });
+  };
+
+  addJob = (e) => {
+    e.preventDefault();
+    this.setState({
+      jobs: this.state.jobs.concat(this.state.jobData),
+      jobData: {
+        companyName: '',
+        positionTitle: '',
+        jobDescription: '',
+        datesWorked: '',
+        id: uniqid(),
+      }
+    });
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -90,7 +120,7 @@ class App extends Component {
   }
 
   render() {
-    const { generalData, educationData, practicalData } = this.state;
+    const { generalData, schoolData, jobData, jobs, schools } = this.state;
     return (
       <div className="cv-main">
         <form onSubmit={this.handleSubmit}>
@@ -99,14 +129,19 @@ class App extends Component {
             handleChangeGeneral={this.handleChangeGeneral} 
           />
           <Education 
-            educationData={educationData} 
+            schoolData={schoolData}
+            schools={schools} 
             handleChangeEducation={this.handleChangeEducation}
+            addSchool={this.addSchool}
           />
           <Practical 
-            practicalData={practicalData} 
+            jobData={jobData} 
+            jobs={jobs}
             handleChangePractical={this.handleChangePractical}
+            addJob={this.addJob}
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Finalize</button>
+          <button type="button">Edit</button>
         </form>
       </div>
     )
