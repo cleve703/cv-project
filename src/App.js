@@ -34,6 +34,7 @@ class App extends Component {
         id: uniqid(),
       },
       jobs: [],
+      draft: true,
     }
   }
   
@@ -87,30 +88,34 @@ class App extends Component {
 
   addSchool = (e) => {
     e.preventDefault();
-    this.setState({
-      schools: this.state.schools.concat(this.state.schoolData),
-      schoolData: {
-        schoolName: '',
-        schoolLocation: '',
-        degreeType: '',
-        datesAttended: '',
-        id: uniqid(),
-      }
-    });
+    if (this.state.schoolData.schoolName !== '') {
+      this.setState({
+        schools: this.state.schools.concat(this.state.schoolData),
+        schoolData: {
+          schoolName: '',
+          schoolLocation: '',
+          degreeType: '',
+          datesAttended: '',
+          id: uniqid(),
+        }
+      });
+    }
   };
 
   addJob = (e) => {
     e.preventDefault();
-    this.setState({
-      jobs: this.state.jobs.concat(this.state.jobData),
-      jobData: {
-        companyName: '',
-        positionTitle: '',
-        jobDescription: '',
-        datesWorked: '',
-        id: uniqid(),
-      }
-    });
+    if (this.state.jobData.companyName !== '') {
+      this.setState({
+        jobs: this.state.jobs.concat(this.state.jobData),
+        jobData: {
+          companyName: '',
+          positionTitle: '',
+          jobDescription: '',
+          datesWorked: '',
+          id: uniqid(),
+        }
+      });
+    }
   }
 
   deleteSchool = (schoolId) => {
@@ -118,21 +123,25 @@ class App extends Component {
       schools: this.state.schools.filter(school => school.id !== schoolId)
     })
   }
-
+  
   deleteJob = (jobId) => {
     this.setState({
       jobs: this.state.jobs.filter(job => job.id !== jobId)
     })
   }
-
-
+  
+  
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
+    this.addJob(e);
+    this.addSchool(e);
+    this.setState({
+      draft: !this.state.draft,
+    })
   }
 
   render() {
-    const { generalData, schoolData, jobData, jobs, schools } = this.state;
+    const { generalData, schoolData, jobData, jobs, schools, draft } = this.state;
     return (
       <div className="cv-main">
         <form onSubmit={this.handleSubmit}>
@@ -146,6 +155,7 @@ class App extends Component {
             handleChangeEducation={this.handleChangeEducation}
             addSchool={this.addSchool}
             deleteSchool={this.deleteSchool}
+            draft={draft}
           />
           <Practical 
             jobData={jobData} 
@@ -153,9 +163,10 @@ class App extends Component {
             handleChangePractical={this.handleChangePractical}
             addJob={this.addJob}
             deleteJob={this.deleteJob}
+            draft={draft}
           />
-          <button type="submit">Finalize</button>
-          <button type="button">Edit</button>
+          <button type="submit" className={this.state.draft === true ? "" : "editable-off" }>Finalize</button>
+          <button type="button" onClick={this.handleSubmit} className={this.state.draft === false ? "" : "editable-off" }>Edit</button>
         </form>
       </div>
     )

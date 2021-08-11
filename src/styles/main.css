@@ -35,3 +35,6 @@ button {
 #city-state-zip {
   font-size: 25px;
 }
+.editable-off {
+  display: none;
+}

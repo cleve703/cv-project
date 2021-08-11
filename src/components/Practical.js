@@ -2,7 +2,9 @@ import React from "react";
 
 class Practical extends React.Component {
   render() {
-    const { jobData, handleChangePractical, addJob, jobs, deleteJob } = this.props;
+    const { jobData, handleChangePractical, addJob, jobs, deleteJob, draft } = this.props;
+    let editableClass = ""
+    draft ? editableClass = "" : editableClass = "editable-off";
     return (
       <div>
           {jobs.map((job) => {
@@ -11,12 +13,12 @@ class Practical extends React.Component {
                         <input value={job.positionTitle} disabled />
                         <input value={job.jobDescription} disabled />
                         <input value={job.datesWorked} disabled />
-                        <button type="button" onClick={ () => deleteJob(job.id)}>Delete</button>
+                        <button type="button" className={editableClass} onClick={ () => deleteJob(job.id)}>Delete</button>
                       </fieldset>
                     )
           })}
       
-        <fieldset>
+        <fieldset className={editableClass}>
           <input
             onChange={ e => handleChangePractical(e)}
             name="companyName"
@@ -45,7 +47,7 @@ class Practical extends React.Component {
             placeholder="Dates Worked"
             value={jobData.datesWorked}
           />
-          <button type="button" onClick={addJob}>Add a job</button>
+          <button type="button" className={editableClass} onClick={addJob}>Add another job</button>
         </fieldset>
       </div>
     )

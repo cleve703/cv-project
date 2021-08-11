@@ -2,7 +2,9 @@ import React from "react";
 
 class Education extends React.Component {
   render() {
-    const { schoolData, handleChangeEducation, addSchool, schools, deleteSchool } = this.props;
+    const { schoolData, handleChangeEducation, addSchool, schools, deleteSchool, draft } = this.props;
+    let editableClass = ""
+    draft ? editableClass = "" : editableClass = "editable-off";
     return (
       <div>
           {schools.map((school) => {
@@ -11,11 +13,11 @@ class Education extends React.Component {
                           <input value={school.schoolLocation} disabled />
                           <input value={school.degreeType} disabled />
                           <input value={school.datesAttended} disabled />
-                          <button type="button" onClick={() => deleteSchool(school.id)}>Delete</button>
+                          <button type="button" className={editableClass} onClick={() => deleteSchool(school.id)}>Delete</button>
                       </fieldset>
                     )
           })}
-        <fieldset>
+        <fieldset className={editableClass}>
           <input
             onChange={ e => handleChangeEducation(e)}
             name="schoolName"
@@ -40,7 +42,7 @@ class Education extends React.Component {
             placeholder="Dates Attended"
             value={schoolData.datesAttended}
           />
-          <button type="button" onClick={addSchool}>Add a school</button>
+          <button type="button" className={editableClass} onClick={addSchool}>Add another school</button>
         </fieldset>
       </div>
     )
